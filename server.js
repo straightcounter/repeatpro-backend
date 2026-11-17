@@ -2,6 +2,7 @@
 import express from "express";
 import "dotenv/config";
 import cronRouter from "./routes/cron.js";
+import campaignRouter from "./routes/campaign.js";
 
 import {
   connectWhatsApp,
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
@@ -21,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/cron", cronRouter);
+app.use("/api/campaign", campaignRouter);
 
 const PORT = process.env.PORT || 3001;
 
